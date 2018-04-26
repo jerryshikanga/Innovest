@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+  <title>Innovest Inc</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="{% static '/css/bootstrap.min.css' %}">
+  <link href="{% static '/css/style.css' %}" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
+
+</head>
+<body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
+
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#myPage">Innovest Inc</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav navbar-right">
+        {% block nav_links %}
+        {% endblock %}
+        <li><a href="#contact">CONTACT</a></li>
+        {% if request.user.is_authenticated %}
+          <li> <a href="{% url 'accounts:profile_logged_in' %}"> <span class="text-uppercase"> {{request.user.get_full_name}} </span> </a> </li>
+        {% else %}
+          <li> <a href="{% url 'login' %}"> LOGIN </li> </li>
+        {% endif %}
+      </ul>
+    </div>
+  </div>
+</nav>
+
+{% block content %}
+{% endblock %}
+
+<!-- Container (Contact Section) -->
+<div id="contact" class="container-fluid bg-grey">
+  <h2 class="text-center">CONTACT</h2>
+  <div class="row">
+    <div class="col-sm-5">
+      <p>Contact us and we'll get back to you within 24 hours.</p>
+      <p><span class="glyphicon glyphicon-map-marker"></span> Nairobi, Kenya</p>
+      <p><span class="glyphicon glyphicon-phone"></span> +254 727447101</p>
+      <p><span class="glyphicon glyphicon-envelope"></span> <a href="mailto:jerryshikanga@gmail.com">jerryshikanga@gmail.com</a> </p>
+    </div>
+    <div class="col-sm-7 slideanim">
+      <div class="row">
+        <div class="col-sm-6 form-group">
+          <input class="form-control" id="name" name="name" placeholder="Name" type="text" required>
+        </div>
+        <div class="col-sm-6 form-group">
+          <input class="form-control" id="email" name="email" placeholder="Email" type="email" required>
+        </div>
+      </div>
+      <textarea class="form-control" id="comments" name="comments" placeholder="Comment" rows="5"></textarea><br>
+      <div class="row">
+        <div class="col-sm-12 form-group">
+          <button class="btn btn-default pull-right" type="submit">Send</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Add Google Maps -->
+<div id="googleMap" style="height:400px;width:100%;"></div>
+<script src="{% static '/js/jquery.min.js' %}"></script>
+<script src="{% static '/js/bootstrap.min.js' %}"></script>
+<script src="{% static '/js/javascript.js' %}"> </script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDls_wWfq4tUJDqvmxmwuKB8R0Lkgu0twE&amp;callback=myMap"></script>
+{% block scripts %}
+{% endblock %}
+
+<footer class="container-fluid text-center">
+  <a href="#myPage" title="To Top">
+    <span class="glyphicon glyphicon-chevron-up"></span>
+  </a>
+  <p>Designed and Developed By <a href="https://jerryshikanga.github.io" target="_blank" title="Jerry Shikanga">Jerry Shikanga</a></p>
+</footer>
+
+</body>
+</html>

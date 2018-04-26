@@ -1,0 +1,191 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block nav_links %}
+  <li><a href="#about">ABOUT</a></li>
+  <li><a href="#features">FEATURES</a></li>
+  <li><a href="#categories">CATEGORIES</a></li>
+  <li><a href="#featured">FEATURED</a></li>
+{% endblock %}
+
+{% block content %}
+
+<div class="jumbotron text-center">
+  <h1>Innovest Inc</h1>
+  <p style="{margin-bottom: 0px}">Where Inovation meets Investors</p>
+  <form class="form-inline">
+    <div class="input-group">
+      <input type="email" class="form-control" size="50" placeholder="Email Address" required>
+      <div class="input-group-btn">
+        <button type="button" class="btn btn-success">Subscribe</button>
+      </div>
+    </div>
+  </form>
+</div>
+
+<!-- Container (About Section) -->
+<div id="about" class="container-fluid">
+  <div class="row">
+    <div class="col-sm-8">
+      <h2>About Us</h2><br>
+      <h4>Smart ideas are born every day, their bright minds behind them spending hours on end to perfect them.
+        However, Many a times these ideas fail to take of.
+        One of the mahor cause for this is insufficiency of resources.
+      </h4>
+      <br>
+      <p>The Innovest Team, having faced this challenge, brainstormed and came up with a platform which will make it easier for innovators to get their ideas funded easily.
+        However, we are not just a crowd funding platform, our aim is to create a platform like the stock exchange where investors continually benefit from their investments.
+        This comes with one advantage; Unlike the stocks there is no minimum or maximum limit on what you can invest!
+        Its a free market.
+      </p>
+      <br>
+      <button class="btn btn-default btn-lg">Get in Touch</button>
+    </div>
+    <div class="col-sm-4">
+      <span class="glyphicon glyphicon-signal logo"></span>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid bg-grey">
+  <div class="row">
+    <div class="col-sm-4">
+      <span class="glyphicon glyphicon-globe logo slideanim"></span>
+    </div>
+    <div class="col-sm-8">
+      <h2>Our Values</h2><br>
+      <h4><strong>MISSION:</strong> Our mission is to connect innovators and investors not only in Kenya but all over the world.</h4><br>
+      <p><strong>VISION:</strong> Our vision is an open market where investors and innovators can interact and trade without restriction.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Container (Services Section) -->
+<div id="features" class="container-fluid text-center">
+  <h2>FEATURES</h2>
+  <h4>When you use our platform you enjoy the following benefits :</h4>
+  <br>
+  <div class="row slideanim">
+    <div class="col-sm-4">
+      <span class="glyphicon glyphicon-thumbs-up logo-small"></span>
+      <h4>EASY</h4>
+      <p>Create a campaign or donate less then 5 minutes, just create campaigns, get fund and make your dream.</p>
+    </div>
+    <div class="col-sm-4">
+      <span class="glyphicon glyphicon-lock logo-small"></span>
+      <h4>SECURE</h4>
+      <p>Your transaction and data is secure and you have nothing to worried about us. We are giving world class security</p>
+    </div>
+    <div class="col-sm-4">
+      <span class="glyphicon glyphicon-option-horizontal logo-small"></span>
+      <h4>FLEXIBLE</h4>
+      <p>You can donate any of amount whatever you want, there is no fixed amount in the campaigns</p>
+    </div>
+
+  </div>
+  <br><br>
+  <div class="row slideanim">
+    <div class="col-sm-4">
+      <span class="glyphicon glyphicon-euro logo-small"></span>
+      <h4>MULTIPLE CHANELS</h4>
+      <p>We offer a variety of platforms through which you can deposit or withdraw your funds.</p>
+    </div>
+    <div class="col-sm-4">
+      <span class="glyphicon glyphicon-envelope logo-small"></span>
+      <h4 style="color:#303030;">IN SITE CHAT</h4>
+      <p>You can interact with the innovator directly on our platform!</p>
+    </div>
+    <div class="col-sm-4">
+      <span class="glyphicon glyphicon-gift logo-small"></span>
+      <h4>WE REWARD</h4>
+      <p>Most active users are evaluated at the end of a month an rewards given.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Container (Category Section) -->
+<div id="categories" class="container-fluid text-center bg-grey">
+  <h2>FEATURED CATEGORIES</h2><br>
+  <h4>Below is a list of featured categories </h4>
+  <div class="row text-center slideanim">
+
+    {% for category in categories %}
+    <div class="col-sm-4">
+      <div class="thumbnail">
+        <img src="{{MEDIA_URL}}{{category.picture}}" alt="{{category.name}}" width="100%" height="auto">
+        <p><strong>{{category.name}}</strong></p>
+        <p>{{category.description}}</p>
+      </div>
+    </div>
+    {% endfor %}
+
+  </div><br>
+
+  <h2>What our customers say</h2>
+  <div id="myCarousel" class="carousel slide text-center" data-ride="carousel">
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+      <li data-target="#myCarousel" data-slide-to="1"></li>
+      <li data-target="#myCarousel" data-slide-to="2"></li>
+    </ol>
+
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner" role="listbox">
+      <div class="item active">
+        <h4>"This company is the best. I am so happy with the result!"<br><span>Ian Kabugi, CEO, Z.E.A</span></h4>
+      </div>
+      <div class="item">
+        <h4>"One word... WOW!!"<br><span>Maria Namachanja, Freelancer, Bremen CC</span></h4>
+      </div>
+      <div class="item">
+        <h4>"Could I... BE any more happy with this company?"<br><span>Dan Melcher, CTO, Insurance Co.</span></h4>
+      </div>
+    </div>
+
+    <!-- Left and right controls -->
+    <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+      <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+      <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </div>
+</div>
+
+<!-- Container (Camapigns Section) -->
+<div id="featured" class="container-fluid">
+  <div class="text-center">
+    <h2>Featured Campaigns</h2>
+    <h4>Below is a list of featured camapigns</h4>
+  </div>
+
+  <div class="row slideanim">
+    {% for campaign in campaigns %}
+    <div class="col-sm-4 col-xs-12">
+      <div class="panel panel-default text-center">
+        <div class="panel-heading">
+          <h1>{{campaign.name}}</h1>
+        </div>
+        <div class="panel-body">
+          <img src="{{MEDIA_URL}}{{campaign.picture}}" width="100%" height="auto"/>
+        </div>
+        <div class="panel-footer">
+          <h3>{{campaign.user.get_full_name}}</h3>
+          <h4>{{campaign.summary_text}}</h4>
+          <button class="btn btn-lg">View Campaign</button>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+
+</div>
+
+{% endblock %}
+
+
+{% block scripts %}
+{% endblock %}
