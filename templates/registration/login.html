@@ -1,26 +1,24 @@
 {% extends 'base.html' %}
 
-
-{% block nav_links %}
-  <li> <a href="#register"> REGISTER </a> </li>
-{% endblock %}
-
-
 {% block content %}
 <section id="login" class="container-fluid">
   <h2 class="text-center">LOGIN</h2>
-  <div class="alert alert-danger row text-center">
+
     {% if form.errors %}
+    <div class="alert alert-danger row text-center">
         <p>Your username and password didn't match. Please try again.</p>
+    </div>
     {% endif %}
     {% if next %}
+    <div class="alert alert-danger row text-center">
       {% if user.is_authenticated %}
         <p>Youare logged in as <span>{{request.user.username}}</span> but don't have access to this page. To proceed, please login with an account that has access.</p>
       {% else %}
         <p>Please login to see this page.</p>
       {% endif %}
+    </div>
     {% endif %}
-  </div>
+
   <form class="form-horizontal" method="post" action="{% url 'login' %}">
     {% csrf_token %}
     {% if next %}
@@ -54,7 +52,7 @@
 </section>
 
 <div class="text-center">
-  Dont have an account? <a href="{% url 'accounts:register' %}"> Click here to register. </a
+  <a href="{% url 'accounts:register' %}">Dont have an account? Click here to register. </a>
 </div>
 {% endblock %}
 

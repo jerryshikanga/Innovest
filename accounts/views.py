@@ -5,7 +5,7 @@ from django.views.generic import DetailView, FormView
 from django.views.generic.edit import UpdateView
 from django.contrib.auth.models import User
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.contrib.auth.forms import UserCreationForm
+from .forms import CustonUserCreationForm
 
 # Create your views here.
 class RequestProfile(LoginRequiredMixin, View):
@@ -26,5 +26,12 @@ class ProfileEdit(UpdateView):
 
 class RegisterUser(FormView):
     """docstring for RegisterUser."""
-    form_class = UserCreationForm
+    form_class = CustonUserCreationForm
     template_name = 'registration/register.html'
+
+
+def depositVisa(request, *args, **kwargs):
+    context = {
+        'key':'value',
+    }
+    return render(request, 'accounts/deposit/visa.html', context)
